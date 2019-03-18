@@ -2,9 +2,7 @@
 #define PRINTF
 #include <stdarg.h>
 #include <stdlib.h>
-
-char *print_char(char *, va_list);
-char *print_string(char *, va_list);
+#include <unistd.h>
 /**
  * struct setting_function - Struct operators
  *
@@ -14,9 +12,11 @@ char *print_string(char *, va_list);
 typedef struct setting_function
 {
 	char *type;
-	int (*func)(char *type_struct, char* output, va_list args);
+	int (*func)(char *type_struct, unsigned int *wsize, va_list args);
 } setfun;
 
+unsigned int nelem(char *array);
 int _printf(const char *format, ...);
-int put_output(char *output, char * string);
+int put_output(unsigned int *wsize, char * string);
+int print_string(char *type_struct, unsigned int* wsize, va_list args);
 #endif
