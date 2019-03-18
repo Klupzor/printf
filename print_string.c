@@ -3,9 +3,10 @@
  * print_string - return a string with string received
  *
  * @type_struct: string that contain flags and type of structure
+ * @output: string contain the characteres to print
  * @args: argument to print
  *
- * Return: String to print
+ * Return: return 1 if successfull
  */
 
 int print_string(char *type_struct, char *output, va_list args)
@@ -14,7 +15,7 @@ int print_string(char *type_struct, char *output, va_list args)
 
 	put_output(output, va_arg(args, char*);
 
-	return (0);
+	return (1);
 
 
 }
