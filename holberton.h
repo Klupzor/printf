@@ -4,6 +4,7 @@
 #include <stdlib.h>
 
 char *print_char(char *, va_list);
+char *print_string(char *, va_list);
 /**
  * struct setting_function - Struct operators
  *
