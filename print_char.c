@@ -15,9 +15,7 @@ char *print_char(char *type_struct, va_list args)
 
 	for (i = 0; type_struct[i] != '\0'; i++)
 	{
-		/* validate type and return string with char*/
-		if (type_struct[i] == 'c')
-			return (va_arg(args, char *));
+		return (va_arg(args, char *));
 	}
 
 }
