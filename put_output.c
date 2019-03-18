@@ -1,12 +1,11 @@
-#include <string.h>
-#include <stdlib.h>
+#include "holberton.h"
 
-int put_output(char *output, char * string)
+int put_output(unsigned int *wsize, char * string)
 {
         unsigned int tam;
 
-        tam = strlen(output) + strlen(string);
-        output = realloc(output, tam);
-        strcat(output, string);
-        return(1);
+	tam = nelem(string);
+	write(1, string, tam);
+	*wsize += tam;
+	return(1);
 }

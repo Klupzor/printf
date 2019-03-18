@@ -16,20 +16,18 @@ int _printf(const char *format, ...)
 {
 	setfun functions[] = {
 	//	{"c", print_char},
-	//	{"s", print_string},
+		{"s", print_string},
 	//	{"%", print_percentage},
 		{NULL, NULL}
 	};
 	va_list args;
-	unsigned int fc, tam, count, i, oc;
-	char *output, *c;
-	int written_size, tp;
+	unsigned int fc, count, i, tp, written_size = 0;
+	char *c;
+	unsigned int *wsize = &written_size;
 
 	if (!format)
 		return(-1);
 
-	tam = 0;
-	output = malloc(sizeof(char) * tam);
 	c = malloc(sizeof(char) * 1);
 	va_start(args, format);
 
@@ -44,7 +42,7 @@ int _printf(const char *format, ...)
 				{
 					if (format[count] == *functions[i].type)
 					{
-						tp = output[fc] = functions[i].func("prueba", output, args);
+						tp = functions[i].func("prueba", wsize, args);
 					}
 					if (tp == 1)
 						fc++;
@@ -54,13 +52,10 @@ int _printf(const char *format, ...)
 		if (tp == 0)
 		{
 			c[0] = format[fc];
-			put_output(output, c);
+			put_output(wsize, c);
 		}
 	}
 	va_end(args);
-	tam = strlen(output);
-	written_size =	write(1, output, tam);
 	free(c);
-	free(output);
 	return (written_size);
 }
