@@ -1,6 +1,9 @@
 #ifndef PRINTF
 #define PRINTF
 #include <stdarg.h>
+#include <stdlib.h>
+
+char *print_char(char *, va_list);
 /**
  * struct setting_function - Struct operators
  *
@@ -14,4 +17,5 @@ typedef struct setting_function
 } setfun;
 
 int _printf(const char *format, ...);
+
 #endif
