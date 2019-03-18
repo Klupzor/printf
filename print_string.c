@@ -8,12 +8,13 @@
  * Return: String to print
  */
 
-char *print_string(char *type_struct, va_list args)
+int print_string(char *type_struct, char *output, va_list args)
 {
+    	(void)*type_struct;
 
-	(void)*type_struct;
+	put_output(output, va_arg(args, char*);
 
-	return (va_arg(args, char *));
+	return (0);
 
 
 }
