@@ -14,9 +14,9 @@ char *print_string(char *, va_list);
 typedef struct setting_function
 {
 	char *type;
-	char *(*func)(char *type_struct, va_list args);
+	int (*func)(char *type_struct, char* output, va_list args);
 } setfun;
 
 int _printf(const char *format, ...);
-
+int put_output(char *output, char * string);
 #endif
