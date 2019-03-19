@@ -5,7 +5,7 @@
 #include <unistd.h>
 
 /**
- * printf - print characters with a format to stdout
+ * _printf - print characters with a format to stdout
  *
  * @format: string that contains characters to print
  *
@@ -18,8 +18,8 @@ int _printf(const char *format, ...)
 		{NULL, NULL}
 	};
 	va_list args;
-	unsigned int fc, count, i, tp, written_size = 0;
-	char str [2];
+	unsigned int fc, count, i, written_size = 0;
+	int tp;
 	unsigned int *wsize = &written_size;
 
 	if (!format)
@@ -43,13 +43,10 @@ int _printf(const char *format, ...)
 		}
 		if (tp == 0)
 		{
-			if (format[fc] == '%' && format[fc + 1] == '%')
-				fc++;
-			if (format[fc] == '%' && format[fc + 1] == '\0')
+			tp = printc(wsize, format[fc], format[fc + 1]);
+			if (tp == -1)
 				return (-1);
-			str[0] = format[fc];
-			str[1] = '\0';
-			put_output(wsize, str);
+			fc += tp;
 		}
 	}
 	va_end(args);
