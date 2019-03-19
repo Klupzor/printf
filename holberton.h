@@ -18,7 +18,7 @@ typedef struct setting_function
 
 char *convert_num(int number);
 unsigned int nelem(char *array);
-int printc(unsigned int *wsize, char c, char c2);
+int printc(unsigned int *wsize, unsigned int *fc, char c, char c2);
 int _printf(const char *format, ...);
 int put_output(unsigned int *wsize, char *string);
 int print_string(char *type_struct, unsigned int *wsize, va_list args);

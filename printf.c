@@ -18,14 +18,14 @@ int _printf(const char *format, ...)
 		{"b", print_binary}, {NULL, NULL}
 	};
 	va_list args;
-	unsigned int fc, count, i, written_size = 0;
+	unsigned int count, i, written_size = 0, fc;
 	int tp;
-	unsigned int *wsize = &written_size;
+	unsigned int *wsize = &written_size, *pfc = &fc;
 
 	if (!format)
 		return (-1);
 	va_start(args, format);
-	for (fc = 0 ; format[fc] != '\0' ; fc++)
+	for (fc = 0; format[fc] != '\0' ; fc++)
 	{
 		tp = 0;
 		if (format[fc] == '%')
@@ -43,10 +43,9 @@ int _printf(const char *format, ...)
 		}
 		if (tp == 0)
 		{
-			tp = printc(wsize, format[fc], format[fc + 1]);
+			tp = printc(wsize, pfc, format[fc], format[fc + 1]);
 			if (tp == -1)
 				return (-1);
-			fc += tp;
 		}
 	}
 	va_end(args);
