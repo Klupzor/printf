@@ -16,8 +16,6 @@ int print_char(char *type_struct, unsigned int *wsize, va_list args)
 	(void)*type_struct;
 
 	c = va_arg(args, int);
-	if (c == '\0')
-		return (-1);
 	str[0] = c;
 	str[1] = '\0';
 
