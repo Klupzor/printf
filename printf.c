@@ -15,7 +15,7 @@ int _printf(const char *format, ...)
 {
 	setfun functions[] = {
 		{"c", print_char}, {"s", print_string}, {"i", print_int}, {"d", print_digit},
-		{NULL, NULL}
+		{"b", print_binary}, {NULL, NULL}
 	};
 	va_list args;
 	unsigned int fc, count, i, written_size = 0;
@@ -50,6 +50,5 @@ int _printf(const char *format, ...)
 		}
 	}
 	va_end(args);
-	printf("numeros impresos: %u\n", written_size);
 	return (written_size);
 }
