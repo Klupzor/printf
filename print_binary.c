@@ -19,7 +19,6 @@ int print_binary(char *type_struct, unsigned int *wsize, va_list args)
 	(void)*type_struct;
 
 	number = va_arg(args, int);
-	
 	if (number >= 0)
 		put_output(wsize, itoa(number, num_string, base));
 

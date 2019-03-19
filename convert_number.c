@@ -1,14 +1,9 @@
 #include "holberton.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <stdarg.h>
 
 /**
- * print_int - return a string with integers received
+ * convert_num - return a string with integers received
  *
- * @type_struct: string that contain flags and type of structure
- * @args: argument to print
+ * @n: string that contain flags and type of structure
  *
  * Return: String to print
  */
@@ -18,15 +13,11 @@ char *convert_num(int n)
 {
 	char *arr_number;
 	int cont = 1, pot = 1;
-	unsigned int r, count, num;
-        
-        /*pendiente saber como determinar el tamaño del bufer*/
-	arr_number = malloc(sizeof(char) * 20);
+	unsigned int r, count = 0, num;
 
-	count = 0;
+	arr_number = malloc(sizeof(char) * 20);
 	while (count < sizeof(arr_number))
 	{
-
 		if (n < 0)
 		{
 			arr_number[count] = '-';
@@ -34,7 +25,6 @@ char *convert_num(int n)
 			count++;
 		}
 		num = n;
-
 		while (n / 10 > 0)
 		{
 			n = n / 10;
@@ -57,7 +47,7 @@ char *convert_num(int n)
 		}
 	count++;
 	}
-	arr_number [count] = '\0';
-
+	arr_number[count] = '\0';
 	return (arr_number);
+	free(arr_number);
 }
