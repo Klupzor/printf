@@ -3,6 +3,7 @@
 #include <stdarg.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <stdio.h>
 /**
  * struct setting_function - Struct operators
  *
@@ -23,4 +24,6 @@ int print_string(char *type_struct, unsigned int* wsize, va_list args);
 int print_char(char *type_struct, unsigned int* wsize, va_list args);
 int print_digit(char *type_struct, unsigned int* wsize, va_list args);
 int print_int(char *type_struct, unsigned int* wsize, va_list args);
+int print_binary(char *type_struct, unsigned int* wsize, va_list args);
+char *itoa(int num, char *str, int base);
 #endif

@@ -1,13 +1,10 @@
 #include "holberton.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <stdarg.h>
 
 /**
  * print_digit - return a string with digits to received
  *
  * @type_struct: string that contain flags and type of structure
+ * @wsize: size of string to print
  * @args: argument to print
  *
  * Return: Digits to print

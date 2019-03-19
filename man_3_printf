@@ -1,0 +1,47 @@
+.TH PRINTF(1) "20 Mar 2019" "0.1" "PRINTF COMMANDS"
+.SH NAME
+._printf
+- function manual format print data.
+.SH SYNOPSIS
+printf
+.I FORMAT
+.I [ARGUMENT]...
+.SH DESCRIPTION
+print ARGUMENT(s) according to FORMAT
+--help display this help and exit
+--version
+output version information and exit
+
+FORMAT controls the output as in C printf.  Interpreted sequences are:
+
+\\"     double quote
+
+\\\     backslash
+
+\\a     alert (BEL)
+
+\\b     backspace
+
+\\c     produce no further output
+
+\\e     escape
+
+\\f     form feed
+
+\\n     new line
+
+\\r     carriage return
+
+\\t     horizontal tab
+
+\\v     vertical tab
+
+%%      a single %
+
+.SH OPTIONS
+.Printf
+does not take any options.
+.SH BUGS
+Report Bugs to authors.
+.SH AUTHOR
+Written by Andres Lopez and Yony Brinez Holberton School
