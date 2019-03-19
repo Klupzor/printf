@@ -15,7 +15,11 @@ int print_string(char *type_struct, unsigned int *wsize, va_list args)
 	(void)*type_struct;
 
 	if (s == NULL)
+	{
+		s = "(null)";
+		put_output(wsize, s);
 		return (1);
+	}
 
 	put_output(wsize, s);
 	return (1);
