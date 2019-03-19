@@ -11,8 +11,8 @@
 
 int print_string(char *type_struct, unsigned int *wsize, va_list args)
 {
-	(void)*type_struct;
 	char *s = va_arg(args, char*);
+	(void)*type_struct;
 
 	put_output(wsize, s);
 	return (1);
