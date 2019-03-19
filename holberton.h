@@ -15,8 +15,12 @@ typedef struct setting_function
 	int (*func)(char *type_struct, unsigned int *wsize, va_list args);
 } setfun;
 
+char *convert_num(int number);
 unsigned int nelem(char *array);
 int _printf(const char *format, ...);
 int put_output(unsigned int *wsize, char * string);
 int print_string(char *type_struct, unsigned int* wsize, va_list args);
+int print_char(char *type_struct, unsigned int* wsize, va_list args);
+int print_digit(char *type_struct, unsigned int* wsize, va_list args);
+int print_int(char *type_struct, unsigned int* wsize, va_list args);
 #endif

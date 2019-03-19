@@ -15,8 +15,10 @@
 int _printf(const char *format, ...)
 {
 	setfun functions[] = {
-	//	{"c", print_char},
+		{"c", print_char},
 		{"s", print_string},
+		{"i", print_int},
+		{"d", print_digit},
 	//	{"%", print_percentage},
 		{NULL, NULL}
 	};
