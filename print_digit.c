@@ -12,13 +12,15 @@
 
 int print_digit(char *type_struct, unsigned int *wsize, va_list args)
 {
-	char *num_string;
+	char num_string[128];
+	int base = 10;
+	int number;
 
 	(void)*type_struct;
 
-	num_string = convert_num(va_arg(args, int));
+	number = va_arg(args, int);
 
-	put_output(wsize, num_string);
+	put_output(wsize, itoa(number, num_string, base));
 
 	return (1);
 
