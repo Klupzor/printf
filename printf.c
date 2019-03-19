@@ -5,7 +5,7 @@
 #include <unistd.h>
 
 /**
- * printf - print characters with a format to stdout
+ * _printf - print characters with a format to stdout
  *
  * @format: string that contains characters to print
  *
@@ -18,13 +18,12 @@ int _printf(const char *format, ...)
 		{NULL, NULL}
 	};
 	va_list args;
-	unsigned int fc, count, i, tp, written_size = 0;
-	char *c;
+	unsigned int fc, count, i, written_size = 0;
+	int tp;
 	unsigned int *wsize = &written_size;
 
 	if (!format)
 		return (-1);
-	c = malloc(sizeof(char) * 1);
 	va_start(args, format);
 	for (fc = 0 ; format[fc] != '\0' ; fc++)
 	{
@@ -44,12 +43,13 @@ int _printf(const char *format, ...)
 		}
 		if (tp == 0)
 		{
-			c[0] = format[fc];
-			put_output(wsize, c);
+			tp = printc(wsize, format[fc], format[fc + 1]);
+			if (tp == -1)
+				return (-1);
+			fc += tp;
 		}
 	}
 	va_end(args);
-	free(c);
 	printf("numeros impresos: %u\n", written_size);
 	return (written_size);
 }
