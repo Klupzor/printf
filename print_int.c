@@ -1,13 +1,10 @@
 #include "holberton.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <stdarg.h>
 
 /**
  * print_int - return a string with integers received
  *
  * @type_struct: string that contain flags and type of structure
+ * @wsize: size of string
  * @args: argument to print
  *
  * Return: String to print
