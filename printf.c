@@ -11,14 +11,38 @@
  *
  * Return: number of characters printed
  */
-int _printf(const char *format, ...)
-{
+
+int selfunction(const char *format, unsigned int *fc,
+		unsigned int *wsize, va_list args)
+{	
 	setfun functions[] = {
 		{"c", print_char}, {"s", print_string}, {"i", print_int}, {"d", print_digit},
-		{"b", print_binary}, {NULL, NULL}
+		{"b", print_binary}, {NULL, NULL} 
 	};
+	unsigned int count, i;
+	int tp = 0;
+
+		for (i = 0 ; functions[i].type != NULL && tp == 0; i++)
+		{
+			for (count = *fc + 1;  tp == 0 && format[count] != '\0'; count++)
+			{
+				printf("caracter: %c function: %c\n", format[count], *functions[i].type);
+				if (format[count] == *functions[i].type)
+					tp = functions[i].func("prueba", wsize, args);
+				if (tp == -1)
+					return (-1);
+				if (tp == 1)
+					*fc += 1;
+			}
+		}
+
+	return (tp);
+}
+
+int _printf(const char *format, ...)
+{
 	va_list args;
-	unsigned int count, i, written_size = 0, fc;
+	unsigned int written_size = 0, fc;
 	int tp;
 	unsigned int *wsize = &written_size, *pfc = &fc;
 
@@ -30,18 +54,7 @@ int _printf(const char *format, ...)
 		tp = 0;
 		if (format[fc] == '%')
 		{
-			for (count = fc + 1;  tp == 0 && format[count] != '\0'; count++)
-			{
-				for (i = 0 ; functions[i].type != NULL && tp == 0; i++)
-				{
-					if (format[count] == *functions[i].type)
-						tp = functions[i].func("prueba", wsize, args);
-					if (tp == -1)
-						return (-1);
-					if (tp == 1)
-						fc++;
-				}
-			}
+			tp = selfunction(format, pfc, wsize, args);
 		}
 		if (tp == 0)
 		{
