@@ -36,6 +36,8 @@ int _printf(const char *format, ...)
 				{
 					if (format[count] == *functions[i].type)
 						tp = functions[i].func("prueba", wsize, args);
+					if (tp == -1)
+						return (-1);
 					if (tp == 1)
 						fc++;
 				}
