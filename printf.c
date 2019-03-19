@@ -15,11 +15,10 @@ int _printf(const char *format, ...)
 {
 	setfun functions[] = {
 		{"c", print_char}, {"s", print_string}, {"i", print_int}, {"d", print_digit},
-		{"b", print_binary}, {NULL, NULL}
-	};
+		{"b", print_binary}, {NULL, NULL} };
 	va_list args;
 	unsigned int count, i, written_size = 0, fc;
-	int tp;
+	int tp, stp;
 	unsigned int *wsize = &written_size, *pfc = &fc;
 
 	if (!format)
@@ -27,12 +26,12 @@ int _printf(const char *format, ...)
 	va_start(args, format);
 	for (fc = 0; format[fc] != '\0' ; fc++)
 	{
-		tp = 0;
+		tp = 0, stp = 0;
 		if (format[fc] == '%')
 		{
-			for (count = fc + 1;  tp == 0 && format[count] != '\0'; count++)
+			for (count = fc + 1;  tp == 0 && stp == 0 && format[count] != '\0'; count++)
 			{
-				for (i = 0 ; functions[i].type != NULL && tp == 0; i++)
+				for (i = 0 ; functions[i].type != NULL && tp == 0 && stp == 0; i++)
 				{
 					if (format[count] == *functions[i].type)
 						tp = functions[i].func("prueba", wsize, args);
@@ -40,6 +39,8 @@ int _printf(const char *format, ...)
 						return (-1);
 					if (tp == 1)
 						fc++;
+					if (functions[i + 1].type == NULL)
+						stp = 1;
 				}
 			}
 		}
