@@ -35,8 +35,7 @@ void my_reverse(char str[], int len)
 
 char *itoa(int num, char *str, int base)
 {
-	int i = 0;
-	int isNegative = 0;
+	int i = 0, isNegative = 0, rem;
 	/* A zero is same "0" string in all base */
 	if (num == 0)
 	{
@@ -49,27 +48,30 @@ char *itoa(int num, char *str, int base)
 	 * is 10 otherwise considered unsigned number
 	 */
 	if (num < 0 && base == 10)
-	{
 		isNegative = 1;
-		num = -num;
-	}
-
 	/**
 	 * example: rem = 18 % 10 = 8, 8 > 9 No then save '8'
 	 * num = 18 / 10 = 1, * rem = 1 % 10 = 1, 1 No the save '1'
 	 */
 	while (num != 0)
 	{
-		int rem = num % base;
-
-		str[i++] = (rem > 9) ? (rem - 10) + 'A' : rem + '0';
-		num = num / base;
+		if (isNegative)
+		{
+			/* Condition for manage mayor numbers */
+			rem = num % base;
+			str[i++] = (-rem > 9) ? (-rem - 10) + 'A' : -rem + '0';
+			num = num / base;
+		}
+		else
+		{
+			rem = num % base;
+			str[i++] = (rem > 9) ? (rem - 10) + 'A' : rem + '0';
+			num = num / base;
+		}
 	}
 	/* Append negative sign for negative numbers */
 	if (isNegative == 1)
-	{
 		str[i++] = '-';
-	}
 	str[i] = '\0';
 	my_reverse(str, i);
 	return (str);
