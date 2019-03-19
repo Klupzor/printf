@@ -19,13 +19,11 @@ int _printf(const char *format, ...)
 	};
 	va_list args;
 	unsigned int fc, count, i, tp, written_size = 0;
-	//char *c,
 	char str [2];
 	unsigned int *wsize = &written_size;
 
 	if (!format)
 		return (-1);
-	//c = malloc(sizeof(char) * 1);
 	va_start(args, format);
 	for (fc = 0 ; format[fc] != '\0' ; fc++)
 	{
@@ -47,13 +45,14 @@ int _printf(const char *format, ...)
 		{
 			if (format[fc] == '%' && format[fc + 1] == '%')
 				fc++;
+			if (format[fc] == '%' && format[fc + 1] == '\0')
+				return (-1);
 			str[0] = format[fc];
 			str[1] = '\0';
 			put_output(wsize, str);
 		}
 	}
 	va_end(args);
-	//free(c);
 	printf("numeros impresos: %u\n", written_size);
 	return (written_size);
 }
