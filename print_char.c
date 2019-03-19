@@ -11,10 +11,11 @@
 
 int print_char(char *type_struct, unsigned int *wsize, va_list args)
 {
-	(void)*type_struct;
+	char c;
 	char str[2];
-	char c = va_arg(args, int);
+	(void)*type_struct;
 
+	c = va_arg(args, int);
 	str[0] = c;
 	str[1] = '\0';
 
