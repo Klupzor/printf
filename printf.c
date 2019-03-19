@@ -12,33 +12,6 @@
  * Return: number of characters printed
  */
 
-int selfunction(const char *format, unsigned int *fc,
-		unsigned int *wsize, va_list args)
-{	
-	setfun functions[] = {
-		{"c", print_char}, {"s", print_string}, {"i", print_int}, {"d", print_digit},
-		{"b", print_binary}, {NULL, NULL} 
-	};
-	unsigned int count, i;
-	int tp = 0;
-
-		for (i = 0 ; functions[i].type != NULL && tp == 0; i++)
-		{
-			for (count = *fc + 1;  tp == 0 && format[count] != '\0'; count++)
-			{
-				printf("caracter: %c function: %c\n", format[count], *functions[i].type);
-				if (format[count] == *functions[i].type)
-					tp = functions[i].func("prueba", wsize, args);
-				if (tp == -1)
-					return (-1);
-				if (tp == 1)
-					*fc += 1;
-			}
-		}
-
-	return (tp);
-}
-
 int _printf(const char *format, ...)
 {
 	va_list args;

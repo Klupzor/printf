@@ -16,6 +16,8 @@ typedef struct setting_function
 	int (*func)(char *type_struct, unsigned int *wsize, va_list args);
 } setfun;
 
+int selfunction(const char *format, unsigned int *fc,
+		unsigned int *wsize, va_list args);
 char *convert_num(int number);
 unsigned int nelem(char *array);
 int printc(unsigned int *wsize, unsigned int *fc, char c, char c2);
