@@ -1,5 +1,4 @@
 #include "holberton.h"
-#include <string.h>
 /**
  * reverse_array - prints reverse  int array.
  *
