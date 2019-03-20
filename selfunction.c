@@ -15,8 +15,11 @@ int selfunction(const char *format, unsigned int *fc,
 	unsigned int *wsize, va_list args)
 {
 	setfun functions[] = {
-	{"c", print_char}, {"s", print_string}, {"i", print_int}, {"d", print_digit},
-	{"b", print_binary}, {"r", print_reverse}, {NULL, NULL}
+    {"r", print_reverse}, {"c", print_char}, 
+    {"s", print_string}, {"i", print_int}, {"d", print_digit},
+		{"b", print_binary}, {"x", print_hexa},
+		{"o", print_octal}, {"X", print_hexa},
+		{NULL, NULL}
 	};
 	unsigned int count, i;
 	int tp = 0, stp = 0;
