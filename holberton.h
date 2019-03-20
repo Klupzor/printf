@@ -29,4 +29,6 @@ int print_digit(char *type_struct, unsigned int *wsize, va_list args);
 int print_int(char *type_struct, unsigned int *wsize, va_list args);
 int print_binary(char *type_struct, unsigned int *wsize, va_list args);
 char *itoa(int num, char *str, int base);
+void reverse_array(char *s, unsigned int n, unsigned int *wsize);
+int print_reverse(char *type_struct, unsigned int *wsize, va_list args);
 #endif
